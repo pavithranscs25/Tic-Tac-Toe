@@ -319,7 +319,7 @@ function App() {
                 {playerBeatComputer ? (
                   <>
                     <Icon name="spark" size={15} />
-                    <span>You beat the computer!</span>
+                    <span>You won!</span>
                     <span className="celebration-confetti confetti-one" aria-hidden="true" />
                     <span className="celebration-confetti confetti-two" aria-hidden="true" />
                     <span className="celebration-confetti confetti-three" aria-hidden="true" />
