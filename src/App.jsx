@@ -189,6 +189,7 @@ function App() {
   const statusClass = result?.type === "win"
     ? `status-${result.player.toLowerCase()}`
     : result?.type === "draw" ? "status-draw" : currentPlayer === "O" ? "status-o" : "status-x";
+  const playerBeatComputer = mode === "computer" && result?.type === "win" && result.player === "X";
 
   return (
     <main className="app-shell">
@@ -198,7 +199,7 @@ function App() {
         <header className="topbar">
           <a className="brand" href="#" aria-label="Tic Tac Toe home">
             <span className="brand-mark"><span>X</span><span>O</span></span>
-            <span className="brand-name">nine<span>.</span></span>
+            <span className="brand-name">XO_CLASH</span>
           </a>
           <div className="topbar-note"><span className="live-dot" /> A little friendly competition</div>
         </header>
@@ -314,11 +315,20 @@ function App() {
             </div>
 
             <div className="game-panel-bottom">
-              <span className="board-hint">
-                {result ? "Ready when you are for another round" : "Pick an open square to play"}
+              <span className={`board-hint${playerBeatComputer ? " win-celebration" : ""}`}>
+                {playerBeatComputer ? (
+                  <>
+                    <Icon name="spark" size={15} />
+                    <span>You beat the computer!</span>
+                    <span className="celebration-confetti confetti-one" aria-hidden="true" />
+                    <span className="celebration-confetti confetti-two" aria-hidden="true" />
+                    <span className="celebration-confetti confetti-three" aria-hidden="true" />
+                    <span className="celebration-confetti confetti-four" aria-hidden="true" />
+                  </>
+                ) : result ? "Ready when you are for another round" : "Pick an open square to play"}
               </span>
               <div className="game-actions">
-                <button className="button-secondary" type="button" onClick={resetRound}>
+                <button className="button-secondary" type="button" onClick={resetScores}>
                   <Icon name="refresh" size={16} /> Restart
                 </button>
                 <button className="button-primary" type="button" onClick={() => resetRound(true)}>
