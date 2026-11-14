@@ -954,25 +954,38 @@ a:focus-visible {
   }
 
   .game-panel-bottom {
-    align-items: flex-end;
-    gap: 10px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
   }
 
   .board-hint {
-    max-width: 115px;
+    max-width: none;
     line-height: 1.45;
+    text-align: center;
   }
 
   .game-actions {
-    gap: 6px;
+    width: 100%;
+    gap: 8px;
   }
 
   .button-secondary,
   .button-primary {
     gap: 5px;
-    min-height: 33px;
-    padding: 0 8px;
-    font-size: 9px;
+    min-height: 44px;
+    flex: 1;
+    padding: 0 10px;
+    font-size: 11px;
+  }
+
+  .difficulty-options button {
+    min-height: 40px;
+  }
+
+  .reset-scores {
+    min-height: 44px;
+    margin-top: 5px;
   }
 
   .sidebar {
